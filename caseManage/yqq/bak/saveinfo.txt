@@ -1,0 +1,33 @@
+﻿*** Settings ***
+Library           Collections
+Library           ../../module/judge.py
+
+*** Test Cases ***
+case1
+    ${request}    create dictionary    host    http://yqq.emoney.cn    url    /myhome/saveinfo    method    post    header    \    protocol    http
+    ${request_body}    create dictionary    UserId    26035    NickName    灵儿的守护    sex
+    ...    女    select_year    1921    select_month    2    select_day
+    ...    1    prov    北京    city    东城区    qq
+    ...    1234567
+    ${judge_value}    create dictionary    ErrMessage    保存成功    HasError    FALSE    HRESULT
+    ...    \    ObjectValue    1
+    log    ${request}
+    log    ${request_body}
+    log    ${judge_value}
+    ${re_data}    judge_start    ${request}    ${request_body}    ${judge_value}
+    log    ${re_data}
+
+case2
+    ${request}    create dictionary    host    http://yqq.emoney.cn    url    /myhome/saveinfo    method
+    ...    post    header    \    protocol    http
+    ${request_body}    create dictionary    UserId    26035    NickName    灵儿的守护    sex
+    ...    女    select_year    1921    select_month    23    select_day
+    ...    1    prov    北京    city    东城区    qq
+    ...    1234567
+    ${judge_value}    create dictionary    ErrMessage    保存成功    HasError    False    HRESULT
+    ...    \    ObjectValue    1
+    log    ${request}
+    log    ${request_body}
+    log    ${judge_value}
+    ${re_data}    judge_start    ${request}    ${request_body}    ${judge_value}
+    log    ${re_data}
