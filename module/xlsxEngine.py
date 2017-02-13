@@ -51,7 +51,7 @@ class xlsxEngine_op(object):
 
     def create(self):
         try:
-            self.xlsx_object = xlsxwriter.Workbook(self.xlsx_name + ".xlsx")
+            # self.xlsx_object = xlsxwriter.Workbook(self.xlsx_name + ".xlsx")
             self.xlsx_sheet = self.xlsx_object.add_worksheet("para")
             self.xlsx_sheet.write(0, 0, "Host")
             self.xlsx_sheet.write(1, 0, "Url")
@@ -67,4 +67,17 @@ class xlsxEngine_op(object):
         except Exception, e:
             print e
 
-    # def init_para(self):
+    def init_casesheet(self):
+
+        if not self.xlrd_object:
+            print "write para in %s"%self.xlsx_name
+        else:
+            self.init_case()
+            self.init_json()
+
+    def init_case(self):
+        print "init_case"
+
+    def init_json(self):
+        print "init_json"
+
