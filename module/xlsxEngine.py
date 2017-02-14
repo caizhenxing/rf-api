@@ -3,6 +3,7 @@ import xlrd
 import xlsxwriter
 import recursive
 import os
+import op_request
 
 class xlsxEngine_rd(object):
 
@@ -15,6 +16,8 @@ class xlsxEngine_rd(object):
     def xlrd_open(self):
         try:
             self.xlrd_object = xlrd.open_workbook(self.xlsx_name)
+            self.para_sheet = self.xlrd_object.sheet_by_name("para")
+            self.case_sheet = self.xlrd_object.sheet_by_name("case")
             self.isopenfailed = False
         except Exception,e:
             self.isopenfailed = True
@@ -22,7 +25,28 @@ class xlsxEngine_rd(object):
             print e
         finally:
             pass
-        return [self.isopenfailed, self.xlrd_object]
+        return [self.isopenfailed, self.xlrd_object, self.para_sheet, self.case_sheet]
+
+    def cell_pos(self,sheet, target):
+        try:
+            re_dict = {}
+            flag = True
+            for row in range(0, sheet.nrows):
+                if flag:
+                    for col in range(0, sheet.ncols):
+                        if sheet.cell(row, col).value == target:
+                            re_dict["row"] = row
+                            re_dict["col"] = col
+                            flag == False
+                            break
+                else:
+                    break
+        except Exception,e:
+            print "error at xlsxEngine_op -> cell_post"
+
+        return re_dict
+
+
 
 class xlsxEngine_wt(object):
 
@@ -103,7 +127,6 @@ class xlsxEngine_op(object):
 
         templist = []
         all_List = recursive.createTestCase(values, templist, len(values))
-        print all_List
 
         index = 0
         for case_para in all_List:
@@ -114,6 +137,29 @@ class xlsxEngine_op(object):
                 xlsx_case_sheet.write(index+4, y+1, x)
                 y += 1
             index += 1
+
+        request = {}
+        request_body = {}
+
+        request["host"] = xlrd_sheet.cell(0, 1).value
+        request["url"] = xlrd_sheet.cell(1, 1).value
+        request["method"] = xlrd_sheet.cell(2, 1).value
+        request["protocol"] = xlrd_sheet.cell(3, 1).value
+        request["headers"] = xlrd_sheet.cell(4, 1).value
+
+
+        for i in range(0, len(para_list), 1):
+            request_body[para_list[i]] = all_List[0][i]
+
+        opRequest = op_request.op_request(request, request_body)
+        re_dict = opRequest.send_request()
+
+        url1 = "1"
+        json_key_list = recursive.json_key(re_dict["data"], url1)
+        json_key_col = len(para_list) + 2
+        for json_key in json_key_list:
+            xlsx_case_sheet.write(3, json_key_col, json_key)
+            json_key_col += 1
 
         self.xlsx_object.close()
 
@@ -135,7 +181,6 @@ class xlsxEngine_op(object):
             print "error at xlsxEngine_op -> para_list"
 
         return para_list
-
 
     def cell_post(self, sheet, target):
         try:

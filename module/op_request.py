@@ -8,7 +8,7 @@ class op_request(object):
         self.request_url = request["host"] + request["url"]
         self.method = request["method"]
         self.protocol = request["protocol"]
-        self.headers = request["header"]
+        self.headers = request["headers"]
         self.request_body = request_body
 
     def print_self(self):
