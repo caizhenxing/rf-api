@@ -16,7 +16,7 @@ class create_case(object):
         print self.case_sheet.cell(0, 0).value
 
     def create_case(self):
-        fp = open(r"D:\rf-api\caseManage\yqq\text.txt", "w")
+        fp = open(r"D:\rf-api\caseManage\yqq\saveinfo.txt", "w")
         content = "*** Settings ***"+ "\n"
         content = content + "Library           Collections"+ "\n"
         content = content + "Library           ../../module/judge.py" + "\n"

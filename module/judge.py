@@ -21,6 +21,7 @@ class judge(object):
         print response_data
         for x in  set_judge:
             print set_judge[x]
+            print set_judge[x][1]
             print "---------------"
 
         for json_key in judge_value:

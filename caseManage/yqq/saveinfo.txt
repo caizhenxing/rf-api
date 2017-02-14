@@ -5,48 +5,112 @@ Library           ../../module/judge.py
 *** Test Cases ***
 case1
     ${request}    set_request
-    ${request_body}    create dictionary    UserId    26035    NickName    灵儿的守护    sex
-    ...    女    select_year    1921    select_month    23    select_day
-    ...    1    prov    北京    city    东城区    qq
-    ...    1234567
-    ${judge_value}    create dictionary    ErrMessage    保存成功    HasError    False    HRESULT
-    ...    \    ObjectValue    1
+    ${set_judge}    set_judge
+    ${request_body}    create dictionary    UserId    26035    NickName    灵儿的守护    name    xumin2    sex    女    select_year    1921    select_month    2    select_day    1    prov    北京    city    东城区    qq    1234567    
+    ${judge_value}    create dictionary    ErrMessage    保存成功    HasError    FALSE    HRESULT    \    ObjectValue    1.0    
     log    ${request}
     log    ${request_body}
     log    ${judge_value}
-    ${re_data}    judge_start    ${request}    ${request_body}    ${judge_value}
+    ${re_data}    judge_start    ${request}    ${request_body}    ${judge_value}    ${set_judge}
     log    ${re_data}
-
 case2
     ${request}    set_request
-    ${request_body}    create dictionary    UserId    26035    NickName    灵儿的守护    sex
-    ...    女    select_year    1921    select_month    23    select_day
-    ...    1    prov    北京    city    东城区    qq
-    ...    1234567
-    ${judge_value}    create dictionary    ErrMessage    保存成功    HasError    False    HRESULT
-    ...    \    ObjectValue    1
+    ${set_judge}    set_judge
+    ${request_body}    create dictionary    UserId    26035    NickName    灵儿的守护    name    xumin2    sex    女    select_year    1923    select_month    2    select_day    1    prov    北京    city    东城区    qq    1234567    
+    ${judge_value}    create dictionary    ErrMessage    \    HasError    \    HRESULT    \    ObjectValue    \    
     log    ${request}
     log    ${request_body}
     log    ${judge_value}
-    ${re_data}    judge_start    ${request}    ${request_body}    ${judge_value}
+    ${re_data}    judge_start    ${request}    ${request_body}    ${judge_value}    ${set_judge}
     log    ${re_data}
-
 case3
     ${request}    set_request
-    ${request_body}    create dictionary    UserId    26035    NickName    灵儿的守护    sex
-    ...    女    select_year    1921    select_month    2    select_day
-    ...    1    prov    北京    city    东城区    qq
-    ...    1234567
-    ${judge_value}    create dictionary    ErrMessage    保存成功    HasError    FALSE    HRESULT
-    ...    \    ObjectValue    1
+    ${set_judge}    set_judge
+    ${request_body}    create dictionary    UserId    26035    NickName    灵儿的守护    name    xumin2    sex    女    select_year    1921    select_month    13    select_day    1    prov    北京    city    东城区    qq    1234567    
+    ${judge_value}    create dictionary    ErrMessage    \    HasError    \    HRESULT    \    ObjectValue    \    
     log    ${request}
     log    ${request_body}
     log    ${judge_value}
-    ${re_data}    judge_start    ${request}    ${request_body}    ${judge_value}
+    ${re_data}    judge_start    ${request}    ${request_body}    ${judge_value}    ${set_judge}
     log    ${re_data}
-
+case4
+    ${request}    set_request
+    ${set_judge}    set_judge
+    ${request_body}    create dictionary    UserId    26035    NickName    灵儿的守护    name    xumin2    sex    女    select_year    1923    select_month    13    select_day    1    prov    北京    city    东城区    qq    1234567    
+    ${judge_value}    create dictionary    ErrMessage    \    HasError    \    HRESULT    \    ObjectValue    \    
+    log    ${request}
+    log    ${request_body}
+    log    ${judge_value}
+    ${re_data}    judge_start    ${request}    ${request_body}    ${judge_value}    ${set_judge}
+    log    ${re_data}
+case5
+    ${request}    set_request
+    ${set_judge}    set_judge
+    ${request_body}    create dictionary    UserId    26035    NickName    灵儿的守护    name    xumin2    sex    女    select_year    1921    select_month    2    select_day    46    prov    北京    city    东城区    qq    1234567    
+    ${judge_value}    create dictionary    ErrMessage    \    HasError    \    HRESULT    \    ObjectValue    \    
+    log    ${request}
+    log    ${request_body}
+    log    ${judge_value}
+    ${re_data}    judge_start    ${request}    ${request_body}    ${judge_value}    ${set_judge}
+    log    ${re_data}
+case6
+    ${request}    set_request
+    ${set_judge}    set_judge
+    ${request_body}    create dictionary    UserId    26035    NickName    灵儿的守护    name    xumin2    sex    女    select_year    1923    select_month    2    select_day    46    prov    北京    city    东城区    qq    1234567    
+    ${judge_value}    create dictionary    ErrMessage    \    HasError    \    HRESULT    \    ObjectValue    \    
+    log    ${request}
+    log    ${request_body}
+    log    ${judge_value}
+    ${re_data}    judge_start    ${request}    ${request_body}    ${judge_value}    ${set_judge}
+    log    ${re_data}
+case7
+    ${request}    set_request
+    ${set_judge}    set_judge
+    ${request_body}    create dictionary    UserId    26035    NickName    灵儿的守护    name    xumin2    sex    女    select_year    1921    select_month    13    select_day    46    prov    北京    city    东城区    qq    1234567    
+    ${judge_value}    create dictionary    ErrMessage    \    HasError    \    HRESULT    \    ObjectValue    \    
+    log    ${request}
+    log    ${request_body}
+    log    ${judge_value}
+    ${re_data}    judge_start    ${request}    ${request_body}    ${judge_value}    ${set_judge}
+    log    ${re_data}
+case8
+    ${request}    set_request
+    ${set_judge}    set_judge
+    ${request_body}    create dictionary    UserId    26035    NickName    灵儿的守护    name    xumin2    sex    女    select_year    1923    select_month    13    select_day    46    prov    北京    city    东城区    qq    1234567    
+    ${judge_value}    create dictionary    ErrMessage    不成功    HasError    1    HRESULT    \    ObjectValue    2.0    
+    log    ${request}
+    log    ${request_body}
+    log    ${judge_value}
+    ${re_data}    judge_start    ${request}    ${request_body}    ${judge_value}    ${set_judge}
+    log    ${re_data}
+case9
+    ${request}    set_request
+    ${set_judge}    set_judge
+    ${request_body}    create dictionary    UserId    12345.0    NickName    灵儿的守护    name    xumin1    sex    不明    select_year    1978.0    select_month    12.0    select_day    11.0    prov    上海    city    静安区    qq    7654332.0    
+    ${judge_value}    create dictionary    ErrMessage    \    HasError    \    HRESULT    \    ObjectValue    \    
+    log    ${request}
+    log    ${request_body}
+    log    ${judge_value}
+    ${re_data}    judge_start    ${request}    ${request_body}    ${judge_value}    ${set_judge}
+    log    ${re_data}
+case10
+    ${request}    set_request
+    ${set_judge}    set_judge
+    ${request_body}    create dictionary    UserId    12354.0    NickName    灵儿的守护    name    xumin3    sex    不明    select_year    1978.0    select_month    12.0    select_day    11.0    prov    上海    city    静安区    qq    3213213.0    
+    ${judge_value}    create dictionary    ErrMessage    \    HasError    \    HRESULT    \    ObjectValue    \    
+    log    ${request}
+    log    ${request_body}
+    log    ${judge_value}
+    ${re_data}    judge_start    ${request}    ${request_body}    ${judge_value}    ${set_judge}
+    log    ${re_data}
 *** Keywords ***
 set_request
-    ${request}    create dictionary    host    http://yqq.emoney.cn    url    /myhome/saveinfo    method
-    ...    post    headers    \    protocol    http
+    ${request}    create dictionary    host    http://yqq.emoney.cn    url    /myhome/saveinfo    method    post    protocol    http    headers    \    
     [Return]    ${request}
+set_judge
+    @{ErrMessage}    create list    in    保存成功，不成功    str
+    @{HasError}    create list    equal    \    bool
+    @{HRESULT}    create list    \    \    \
+    @{ObjectValue}    create list    \    \    int
+    &{judge}    create dictionary    ErrMessage=@{ErrMessage}    HasError=@{HasError}    HRESULT=@{HRESULT}    ObjectValue=@{ObjectValue}    
+    [Return]    &{judge}
