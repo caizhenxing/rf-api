@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 import xlrd
 import xlsxwriter
+import recursive
 import os
 
 class xlsxEngine_rd(object):
@@ -53,18 +54,115 @@ class xlsxEngine_op(object):
         try:
             self.xlsx_object = xlsxwriter.Workbook(self.xlsx_name + ".xlsx")
             self.xlsx_sheet = self.xlsx_object.add_worksheet("para")
-            self.xlsx_sheet.write(0, 0, "Host")
-            self.xlsx_sheet.write(1, 0, "Url")
-            self.xlsx_sheet.write(2, 0, "Method")
-            self.xlsx_sheet.write(3, 0, "Protocol")
-            self.xlsx_sheet.write(4, 0, "Headers")
+            self.xlsx_sheet.write(0, 0, "host")
+            self.xlsx_sheet.write(1, 0, "url")
+            self.xlsx_sheet.write(2, 0, "method")
+            self.xlsx_sheet.write(3, 0, "protocol")
+            self.xlsx_sheet.write(4, 0, "headers")
             self.xlsx_sheet.write(6, 0, "cookie")
-            self.xlsx_sheet.write(8, 0, "Request_body")
+            self.xlsx_sheet.write(8, 0, "request_body")
             self.xlsx_sheet.write(8, 1, "body_key")
             self.xlsx_sheet.write(9, 1, "body_value")
             self.xlsx_object.close()
             self.isopenfailed = False
         except Exception, e:
-            print e
+            print "error at xlsxEngine_op ->create"
 
-    # def init_para(self):
+    def init_para(self):
+        try:
+            xlrd_sheet = self.xlrd_object.sheet_by_name("para")
+            xlsx_para_sheet = self.xlsx_object.add_worksheet("para")
+            self.copy_execl_sheet(xlrd_sheet, xlsx_para_sheet)
+            xlsx_case_sheet = self.xlsx_object.add_worksheet("case")
+
+        except Exception, e:
+            print "error at xlsxEngine_op -> init_para_try1"
+
+        para_list = self.para_list(xlrd_sheet)
+        values = [[] for i in range(len(para_list))]
+
+        xlsx_case_sheet.write(0, 0, "judge_logic")
+        xlsx_case_sheet.write(1, 0, "judge_env")
+        xlsx_case_sheet.write(2, 0, "key_kind")
+        xlsx_case_sheet.write(3, 0, "case_Id")
+
+
+        for i in range(0, len(para_list), 1):
+            pos = self.cell_post(xlrd_sheet, para_list[i])
+            row = pos["row"]
+            col = pos["col"]
+            for x in range(row + 1, xlrd_sheet.nrows, 1):
+                if xlrd_sheet.cell(x, col).value:
+                    add_para = self.charge_to_str(xlrd_sheet.cell(x, col).value)
+                    values[i].append(add_para)
+
+        for i in range(1, len(para_list)+1, 1):
+            xlsx_case_sheet.write(3, i, para_list[i-1])
+
+        xlsx_case_sheet.write(3, len(para_list)+1, "Judgement")
+
+        templist = []
+        all_List = recursive.createTestCase(values, templist, len(values))
+        print all_List
+
+        index = 0
+        for case_para in all_List:
+            xlsx_case_sheet.write(index+4, 0, index+1)
+            list.reverse(case_para)
+            y = 0
+            for x in case_para:
+                xlsx_case_sheet.write(index+4, y+1, x)
+                y += 1
+            index += 1
+
+        self.xlsx_object.close()
+
+    def copy_execl_sheet(self, source_sheet, target_sheet):
+        try:
+            for row in range(0, source_sheet.nrows):
+                for col in range(0, source_sheet.ncols):
+                    target_sheet.write(row, col, source_sheet.cell(row, col).value)
+        except Exception, e:
+            print "error at xlsxEngine_op -> copy execl sheet"
+
+    def para_list(self, sheet):
+        para_list = []
+        try:
+            request_body_pos = self.cell_post(sheet, "request_body")
+            for x in range(request_body_pos["col"] + 1, sheet.ncols):
+                para_list.append(sheet.cell(request_body_pos["row"], x).value)
+        except Exception,e:
+            print "error at xlsxEngine_op -> para_list"
+
+        return para_list
+
+
+    def cell_post(self, sheet, target):
+        try:
+            re_dict = {}
+            flag = True
+            for row in range(0, sheet.nrows):
+                if flag:
+                    for col in range(0, sheet.ncols):
+                        if sheet.cell(row, col).value == target:
+                            re_dict["row"] = row
+                            re_dict["col"] = col
+                            flag == False
+                            break
+                else:
+                    break
+        except Exception,e:
+            print "error at xlsxEngine_op -> cell_post"
+
+        return re_dict
+
+    def charge_to_str(self, value):
+        re_data =value
+        if isinstance(value, (float)):
+            re_data = str(int(value))
+        return re_data
+
+
+
+
+

@@ -12,12 +12,12 @@ class main(object):
         # f.write(add)
 
         if kind == 1:
-            op_xlsx = xlsxEngine.xlsxEngine_op("test1")
+            op_xlsx = xlsxEngine.xlsxEngine_op("test")
             op_xlsx.create()
 
         if kind == 2:
-            initPara = init_para.init_para()
-            initPara.init_para(filename)
+            op_xlsx = xlsxEngine.xlsxEngine_op("test")
+            op_xlsx.init_para()
 
         if kind == 3:
             initJsonKey = init_json_key.get_json_key()
@@ -29,4 +29,4 @@ class main(object):
 
 if __name__=='__main__':
     test = main()
-    test.main("follow_test",1)
+    test.main("follow_test",2)
