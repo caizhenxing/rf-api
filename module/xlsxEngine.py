@@ -67,16 +67,16 @@ class xlsxEngine_op(object):
 
     def __init__(self, file):
         self.xlsx_name = file
-        if os.path.exists(self.xlsx_name+".xlsx"):
-            self.xlrd_object = xlrd.open_workbook(self.xlsx_name+".xlsx")
+        if os.path.exists(self.xlsx_name+".xls"):
+            self.xlrd_object = xlrd.open_workbook(self.xlsx_name+".xls")
         else:
             self.xlrd_object = None
-        self.xlsx_object = xlsxwriter.Workbook(self.xlsx_name+".xlsx")
+        self.xlsx_object = xlsxwriter.Workbook(self.xlsx_name+".xls")
         self.isopenfailed = True
 
     def create(self):
         try:
-            self.xlsx_object = xlsxwriter.Workbook(self.xlsx_name + ".xlsx")
+            self.xlsx_object = xlsxwriter.Workbook(self.xlsx_name + ".xls")
             self.xlsx_sheet = self.xlsx_object.add_worksheet("para")
             self.xlsx_sheet.write(0, 0, "host")
             self.xlsx_sheet.write(1, 0, "url")
@@ -147,9 +147,11 @@ class xlsxEngine_op(object):
         request["protocol"] = xlrd_sheet.cell(3, 1).value
         request["headers"] = xlrd_sheet.cell(4, 1).value
 
-
-        for i in range(0, len(para_list), 1):
-            request_body[para_list[i]] = all_List[0][i]
+        try:
+            for i in range(0, len(para_list), 1):
+                request_body[para_list[i]] = all_List[0][i]
+        except Exception, e:
+            print "no para"
 
         opRequest = op_request.op_request(request, request_body)
         re_dict = opRequest.send_request()

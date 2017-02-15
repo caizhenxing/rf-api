@@ -6,17 +6,19 @@ sys.setdefaultencoding('utf-8')
 class create_case(object):
 
     def __init__(self, file):
-        self.xlsx_rd = xlsxEngine.xlsxEngine_rd(file+".xlsx")
+        self.xlsx_rd = xlsxEngine.xlsxEngine_rd(file+".xls")
         self.xlrd_open = self.xlsx_rd.xlrd_open()
         self.para_sheet = self.xlrd_open[2]
         self.case_sheet = self.xlrd_open[3]
+        self.file = file
+        print file
 
     def print_value(self):
         print self.para_sheet.cell(0, 0).value
         print self.case_sheet.cell(0, 0).value
 
     def create_case(self):
-        fp = open(r"D:\rf-api\caseManage\yqq\saveinfo.txt", "w")
+        fp = open(r"D:\rf-api\caseManage\yqq\%s.txt"%self.file, "w")
         content = "*** Settings ***"+ "\n"
         content = content + "Library           Collections"+ "\n"
         content = content + "Library           ../../module/judge.py" + "\n"
@@ -75,23 +77,23 @@ class create_case(object):
                 content = content + r"    "
             content = content + "\n"
 
-            content = content + r"    "
-            content = content + r"log"
-            content = content + r"    "
-            content = content + r"${request}"
-            content = content + "\n"
-
-            content = content + r"    "
-            content = content + r"log"
-            content = content + r"    "
-            content = content + r"${request_body}"
-            content = content + "\n"
-
-            content = content + r"    "
-            content = content + r"log"
-            content = content + r"    "
-            content = content + r"${judge_value}"
-            content = content + "\n"
+            # content = content + r"    "
+            # content = content + r"log"
+            # content = content + r"    "
+            # content = content + r"${request}"
+            # content = content + "\n"
+            #
+            # content = content + r"    "
+            # content = content + r"log"
+            # content = content + r"    "
+            # content = content + r"${request_body}"
+            # content = content + "\n"
+            #
+            # content = content + r"    "
+            # content = content + r"log"
+            # content = content + r"    "
+            # content = content + r"${judge_value}"
+            # content = content + "\n"
 
             content = content + r"    "
             content = content + r"${re_data}"
@@ -108,10 +110,64 @@ class create_case(object):
             content = content + "\n"
 
             content = content + r"    "
-            content = content + r"log"
+            content = content + r"${judge_flag}"
+            content = content + r"    "
+            content = content + r"Get From Dictionary"
             content = content + r"    "
             content = content + r"${re_data}"
+            content = content + r"    "
+            content = content + r"judge_flag"
             content = content + "\n"
+
+            content = content + r"    "
+            content = content + r"${response_status}"
+            content = content + r"    "
+            content = content + r"Get From Dictionary"
+            content = content + r"    "
+            content = content + r"${re_data}"
+            content = content + r"    "
+            content = content + r"response_status"
+            content = content + "\n"
+
+            content = content + r"    "
+            content = content + r"${error_list}"
+            content = content + r"    "
+            content = content + r"Get From Dictionary"
+            content = content + r"    "
+            content = content + r"${re_data}"
+            content = content + r"    "
+            content = content + r"error_list"
+            content = content + "\n"
+
+            content = content + r"    "
+            content = content + r"${int200}"
+            content = content + r"    "
+            content = content + r"convert to integer"
+            content = content + r"    "
+            content = content + r"200"
+            content = content + "\n"
+
+            content = content + r"    "
+            content = content + r"log"
+            content = content + r"    "
+            content = content + r"${error_list}"
+            content = content + "\n"
+
+            content = content + r"    "
+            content = content + r"should be equal"
+            content = content + r"    "
+            content = content + r"${response_status}"
+            content = content + r"    "
+            content = content + r"${int200}"
+            content = content + "\n"
+
+            content = content + r"    "
+            content = content + r"should be true"
+            content = content + r"    "
+            content = content + r"${judge_flag}"
+            content = content + "\n"
+
+
 
         content = content + "*** Keywords ***"+ "\n"
         content = content + "set_request" + "\n"

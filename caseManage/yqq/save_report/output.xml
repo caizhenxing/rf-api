@@ -1,0 +1,907 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170215 14:04:56.222" generator="Robot 3.0.2 (Python 2.7.13 on win32)">
+<suite source="D:\rf-api\caseManage" id="s1" name="caseManage">
+<suite source="D:\rf-api\caseManage\yqq" id="s1-s1" name="Yqq">
+<suite source="D:\rf-api\caseManage\yqq\saveinfo.txt" id="s1-s1-s1" name="Saveinfo">
+<test id="s1-s1-s1-t1" name="case1">
+<kw name="set_request">
+<assign>
+<var>${request}</var>
+</assign>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>host</arg>
+<arg>http://yqq.emoney.cn</arg>
+<arg>url</arg>
+<arg>/myhome/saveinfo</arg>
+<arg>method</arg>
+<arg>post</arg>
+<arg>protocol</arg>
+<arg>http</arg>
+<arg>headers</arg>
+</arguments>
+<assign>
+<var>${request}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.394" level="INFO">${request} = {u'host': u'http://yqq.emoney.cn', u'url': u'/myhome/saveinfo', u'method': u'post', u'protocol': u'http', u'headers': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.394" starttime="20170215 14:04:56.394"></status>
+</kw>
+<msg timestamp="20170215 14:04:56.394" level="INFO">${request} = {u'host': u'http://yqq.emoney.cn', u'url': u'/myhome/saveinfo', u'method': u'post', u'protocol': u'http', u'headers': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.394" starttime="20170215 14:04:56.394"></status>
+</kw>
+<kw name="set_judge">
+<assign>
+<var>${set_judge}</var>
+</assign>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+</arguments>
+<assign>
+<var>@{ErrMessage}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.410" level="INFO">@{ErrMessage} = [  |  |  ]</msg>
+<status status="PASS" endtime="20170215 14:04:56.410" starttime="20170215 14:04:56.410"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+</arguments>
+<assign>
+<var>@{HasError}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.410" level="INFO">@{HasError} = [  |  |  ]</msg>
+<status status="PASS" endtime="20170215 14:04:56.410" starttime="20170215 14:04:56.410"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+</arguments>
+<assign>
+<var>@{HRESULT}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.410" level="INFO">@{HRESULT} = [  |  |  ]</msg>
+<status status="PASS" endtime="20170215 14:04:56.410" starttime="20170215 14:04:56.410"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+</arguments>
+<assign>
+<var>@{ObjectValue}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.410" level="INFO">@{ObjectValue} = [  |  |  ]</msg>
+<status status="PASS" endtime="20170215 14:04:56.410" starttime="20170215 14:04:56.410"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>ErrMessage=@{ErrMessage}</arg>
+<arg>HasError=@{HasError}</arg>
+<arg>HRESULT=@{HRESULT}</arg>
+<arg>ObjectValue=@{ObjectValue}</arg>
+</arguments>
+<assign>
+<var>&amp;{judge}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.410" level="INFO">&amp;{judge} = { ErrMessage=['', '', ''] | HasError=['', '', ''] | HRESULT=['', '', ''] | ObjectValue=['', '', ''] }</msg>
+<status status="PASS" endtime="20170215 14:04:56.410" starttime="20170215 14:04:56.410"></status>
+</kw>
+<msg timestamp="20170215 14:04:56.410" level="INFO">${set_judge} = {u'ErrMessage': ['', '', ''], u'HasError': ['', '', ''], u'HRESULT': ['', '', ''], u'ObjectValue': ['', '', '']}</msg>
+<status status="PASS" endtime="20170215 14:04:56.410" starttime="20170215 14:04:56.410"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>UserId</arg>
+<arg>26035</arg>
+<arg>NickName</arg>
+<arg>灵儿的守护</arg>
+<arg>name</arg>
+<arg>xumin2</arg>
+<arg>sex</arg>
+<arg>女</arg>
+<arg>select_year</arg>
+<arg>1921</arg>
+<arg>select_month</arg>
+<arg>2</arg>
+<arg>select_day</arg>
+<arg>1</arg>
+<arg>prov</arg>
+<arg>北京</arg>
+<arg>city</arg>
+<arg>东城区</arg>
+<arg>qq</arg>
+<arg>1234567</arg>
+</arguments>
+<assign>
+<var>${request_body}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.410" level="INFO">${request_body} = {u'UserId': u'26035', u'NickName': u'\u7075\u513f\u7684\u5b88\u62a4', u'name': u'xumin2', u'sex': u'\u5973', u'select_year': u'1921', u'select_month': u'2', u'select_day': u'1', u'prov': u'\u5317\u4ea...</msg>
+<status status="PASS" endtime="20170215 14:04:56.425" starttime="20170215 14:04:56.410"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>ErrMessage</arg>
+<arg>HasError</arg>
+<arg>HRESULT</arg>
+<arg>ObjectValue</arg>
+</arguments>
+<assign>
+<var>${judge_value}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.425" level="INFO">${judge_value} = {u'ErrMessage': '', u'HasError': '', u'HRESULT': '', u'ObjectValue': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.425" starttime="20170215 14:04:56.425"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${request}</arg>
+</arguments>
+<msg timestamp="20170215 14:04:56.425" level="INFO">{u'host': u'http://yqq.emoney.cn', u'url': u'/myhome/saveinfo', u'method': u'post', u'protocol': u'http', u'headers': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.425" starttime="20170215 14:04:56.425"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${request_body}</arg>
+</arguments>
+<msg timestamp="20170215 14:04:56.425" level="INFO">{u'UserId': u'26035', u'NickName': u'\u7075\u513f\u7684\u5b88\u62a4', u'name': u'xumin2', u'sex': u'\u5973', u'select_year': u'1921', u'select_month': u'2', u'select_day': u'1', u'prov': u'\u5317\u4eac', u'city': u'\u4e1c\u57ce\u533a', u'qq': u'1234567'}</msg>
+<status status="PASS" endtime="20170215 14:04:56.425" starttime="20170215 14:04:56.425"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${judge_value}</arg>
+</arguments>
+<msg timestamp="20170215 14:04:56.425" level="INFO">{u'ErrMessage': '', u'HasError': '', u'HRESULT': '', u'ObjectValue': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.425" starttime="20170215 14:04:56.425"></status>
+</kw>
+<kw name="Judge Start" library="judge">
+<arguments>
+<arg>${request}</arg>
+<arg>${request_body}</arg>
+<arg>${judge_value}</arg>
+<arg>${set_judge}</arg>
+</arguments>
+<assign>
+<var>${re_data}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.488" level="INFO">{u'ErrMessage': u'\u4fdd\u5b58\u6210\u529f', u'HasError': False, u'HRESULT': None, u'ObjectValue': 1}
+['', '', '']
+
+---------------
+['', '', '']
+
+---------------
+['', '', '']
+
+---------------
+['', '', '']
+
+---------------
+
+&lt;type 'str'&gt;
+保存成功
+&lt;type 'unicode'&gt;
+----------------
+-1
+---------------
+
+&lt;type 'str'&gt;
+False
+&lt;type 'bool'&gt;
+----------------
+1
+---------------
+
+&lt;type 'str'&gt;
+None
+&lt;type 'NoneType'&gt;
+----------------
+1
+---------------
+
+&lt;type 'str'&gt;
+1
+&lt;type 'int'&gt;
+----------------
+1
+---------------</msg>
+<msg timestamp="20170215 14:04:56.488" level="INFO">${re_data} = 200</msg>
+<status status="PASS" endtime="20170215 14:04:56.503" starttime="20170215 14:04:56.425"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${re_data}</arg>
+</arguments>
+<msg timestamp="20170215 14:04:56.503" level="INFO">200</msg>
+<status status="PASS" endtime="20170215 14:04:56.503" starttime="20170215 14:04:56.503"></status>
+</kw>
+<status status="PASS" endtime="20170215 14:04:56.503" critical="yes" starttime="20170215 14:04:56.394"></status>
+</test>
+<test id="s1-s1-s1-t2" name="case2">
+<kw name="set_request">
+<assign>
+<var>${request}</var>
+</assign>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>host</arg>
+<arg>http://yqq.emoney.cn</arg>
+<arg>url</arg>
+<arg>/myhome/saveinfo</arg>
+<arg>method</arg>
+<arg>post</arg>
+<arg>protocol</arg>
+<arg>http</arg>
+<arg>headers</arg>
+</arguments>
+<assign>
+<var>${request}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.503" level="INFO">${request} = {u'host': u'http://yqq.emoney.cn', u'url': u'/myhome/saveinfo', u'method': u'post', u'protocol': u'http', u'headers': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.503" starttime="20170215 14:04:56.503"></status>
+</kw>
+<msg timestamp="20170215 14:04:56.503" level="INFO">${request} = {u'host': u'http://yqq.emoney.cn', u'url': u'/myhome/saveinfo', u'method': u'post', u'protocol': u'http', u'headers': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.503" starttime="20170215 14:04:56.503"></status>
+</kw>
+<kw name="set_judge">
+<assign>
+<var>${set_judge}</var>
+</assign>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+</arguments>
+<assign>
+<var>@{ErrMessage}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.519" level="INFO">@{ErrMessage} = [  |  |  ]</msg>
+<status status="PASS" endtime="20170215 14:04:56.519" starttime="20170215 14:04:56.519"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+</arguments>
+<assign>
+<var>@{HasError}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.519" level="INFO">@{HasError} = [  |  |  ]</msg>
+<status status="PASS" endtime="20170215 14:04:56.519" starttime="20170215 14:04:56.519"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+</arguments>
+<assign>
+<var>@{HRESULT}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.519" level="INFO">@{HRESULT} = [  |  |  ]</msg>
+<status status="PASS" endtime="20170215 14:04:56.519" starttime="20170215 14:04:56.519"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+</arguments>
+<assign>
+<var>@{ObjectValue}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.519" level="INFO">@{ObjectValue} = [  |  |  ]</msg>
+<status status="PASS" endtime="20170215 14:04:56.519" starttime="20170215 14:04:56.519"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>ErrMessage=@{ErrMessage}</arg>
+<arg>HasError=@{HasError}</arg>
+<arg>HRESULT=@{HRESULT}</arg>
+<arg>ObjectValue=@{ObjectValue}</arg>
+</arguments>
+<assign>
+<var>&amp;{judge}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.519" level="INFO">&amp;{judge} = { ErrMessage=['', '', ''] | HasError=['', '', ''] | HRESULT=['', '', ''] | ObjectValue=['', '', ''] }</msg>
+<status status="PASS" endtime="20170215 14:04:56.519" starttime="20170215 14:04:56.519"></status>
+</kw>
+<msg timestamp="20170215 14:04:56.519" level="INFO">${set_judge} = {u'ErrMessage': ['', '', ''], u'HasError': ['', '', ''], u'HRESULT': ['', '', ''], u'ObjectValue': ['', '', '']}</msg>
+<status status="PASS" endtime="20170215 14:04:56.519" starttime="20170215 14:04:56.503"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>UserId</arg>
+<arg>26035</arg>
+<arg>NickName</arg>
+<arg>灵儿的守护</arg>
+<arg>name</arg>
+<arg>xumin2</arg>
+<arg>sex</arg>
+<arg>女</arg>
+<arg>select_year</arg>
+<arg>1923</arg>
+<arg>select_month</arg>
+<arg>2</arg>
+<arg>select_day</arg>
+<arg>1</arg>
+<arg>prov</arg>
+<arg>北京</arg>
+<arg>city</arg>
+<arg>东城区</arg>
+<arg>qq</arg>
+<arg>1234567</arg>
+</arguments>
+<assign>
+<var>${request_body}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.519" level="INFO">${request_body} = {u'UserId': u'26035', u'NickName': u'\u7075\u513f\u7684\u5b88\u62a4', u'name': u'xumin2', u'sex': u'\u5973', u'select_year': u'1923', u'select_month': u'2', u'select_day': u'1', u'prov': u'\u5317\u4ea...</msg>
+<status status="PASS" endtime="20170215 14:04:56.519" starttime="20170215 14:04:56.519"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>ErrMessage</arg>
+<arg>HasError</arg>
+<arg>HRESULT</arg>
+<arg>ObjectValue</arg>
+</arguments>
+<assign>
+<var>${judge_value}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.534" level="INFO">${judge_value} = {u'ErrMessage': '', u'HasError': '', u'HRESULT': '', u'ObjectValue': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.534" starttime="20170215 14:04:56.534"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${request}</arg>
+</arguments>
+<msg timestamp="20170215 14:04:56.534" level="INFO">{u'host': u'http://yqq.emoney.cn', u'url': u'/myhome/saveinfo', u'method': u'post', u'protocol': u'http', u'headers': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.534" starttime="20170215 14:04:56.534"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${request_body}</arg>
+</arguments>
+<msg timestamp="20170215 14:04:56.534" level="INFO">{u'UserId': u'26035', u'NickName': u'\u7075\u513f\u7684\u5b88\u62a4', u'name': u'xumin2', u'sex': u'\u5973', u'select_year': u'1923', u'select_month': u'2', u'select_day': u'1', u'prov': u'\u5317\u4eac', u'city': u'\u4e1c\u57ce\u533a', u'qq': u'1234567'}</msg>
+<status status="PASS" endtime="20170215 14:04:56.534" starttime="20170215 14:04:56.534"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${judge_value}</arg>
+</arguments>
+<msg timestamp="20170215 14:04:56.534" level="INFO">{u'ErrMessage': '', u'HasError': '', u'HRESULT': '', u'ObjectValue': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.534" starttime="20170215 14:04:56.534"></status>
+</kw>
+<kw name="Judge Start" library="judge">
+<arguments>
+<arg>${request}</arg>
+<arg>${request_body}</arg>
+<arg>${judge_value}</arg>
+<arg>${set_judge}</arg>
+</arguments>
+<assign>
+<var>${re_data}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.597" level="INFO">{u'ErrMessage': u'\u4fdd\u5b58\u6210\u529f', u'HasError': False, u'HRESULT': None, u'ObjectValue': 1}
+['', '', '']
+
+---------------
+['', '', '']
+
+---------------
+['', '', '']
+
+---------------
+['', '', '']
+
+---------------
+
+&lt;type 'str'&gt;
+保存成功
+&lt;type 'unicode'&gt;
+----------------
+-1
+---------------
+
+&lt;type 'str'&gt;
+False
+&lt;type 'bool'&gt;
+----------------
+1
+---------------
+
+&lt;type 'str'&gt;
+None
+&lt;type 'NoneType'&gt;
+----------------
+1
+---------------
+
+&lt;type 'str'&gt;
+1
+&lt;type 'int'&gt;
+----------------
+1
+---------------</msg>
+<msg timestamp="20170215 14:04:56.597" level="INFO">${re_data} = 200</msg>
+<status status="PASS" endtime="20170215 14:04:56.597" starttime="20170215 14:04:56.534"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${re_data}</arg>
+</arguments>
+<msg timestamp="20170215 14:04:56.597" level="INFO">200</msg>
+<status status="PASS" endtime="20170215 14:04:56.597" starttime="20170215 14:04:56.597"></status>
+</kw>
+<status status="PASS" endtime="20170215 14:04:56.597" critical="yes" starttime="20170215 14:04:56.503"></status>
+</test>
+<test id="s1-s1-s1-t3" name="case3">
+<kw name="set_request">
+<assign>
+<var>${request}</var>
+</assign>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>host</arg>
+<arg>http://yqq.emoney.cn</arg>
+<arg>url</arg>
+<arg>/myhome/saveinfo</arg>
+<arg>method</arg>
+<arg>post</arg>
+<arg>protocol</arg>
+<arg>http</arg>
+<arg>headers</arg>
+</arguments>
+<assign>
+<var>${request}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.612" level="INFO">${request} = {u'host': u'http://yqq.emoney.cn', u'url': u'/myhome/saveinfo', u'method': u'post', u'protocol': u'http', u'headers': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.612" starttime="20170215 14:04:56.612"></status>
+</kw>
+<msg timestamp="20170215 14:04:56.612" level="INFO">${request} = {u'host': u'http://yqq.emoney.cn', u'url': u'/myhome/saveinfo', u'method': u'post', u'protocol': u'http', u'headers': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.612" starttime="20170215 14:04:56.612"></status>
+</kw>
+<kw name="set_judge">
+<assign>
+<var>${set_judge}</var>
+</assign>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+</arguments>
+<assign>
+<var>@{ErrMessage}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.612" level="INFO">@{ErrMessage} = [  |  |  ]</msg>
+<status status="PASS" endtime="20170215 14:04:56.612" starttime="20170215 14:04:56.612"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+</arguments>
+<assign>
+<var>@{HasError}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.612" level="INFO">@{HasError} = [  |  |  ]</msg>
+<status status="PASS" endtime="20170215 14:04:56.612" starttime="20170215 14:04:56.612"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+</arguments>
+<assign>
+<var>@{HRESULT}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.628" level="INFO">@{HRESULT} = [  |  |  ]</msg>
+<status status="PASS" endtime="20170215 14:04:56.628" starttime="20170215 14:04:56.628"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+</arguments>
+<assign>
+<var>@{ObjectValue}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.628" level="INFO">@{ObjectValue} = [  |  |  ]</msg>
+<status status="PASS" endtime="20170215 14:04:56.628" starttime="20170215 14:04:56.628"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>ErrMessage=@{ErrMessage}</arg>
+<arg>HasError=@{HasError}</arg>
+<arg>HRESULT=@{HRESULT}</arg>
+<arg>ObjectValue=@{ObjectValue}</arg>
+</arguments>
+<assign>
+<var>&amp;{judge}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.628" level="INFO">&amp;{judge} = { ErrMessage=['', '', ''] | HasError=['', '', ''] | HRESULT=['', '', ''] | ObjectValue=['', '', ''] }</msg>
+<status status="PASS" endtime="20170215 14:04:56.628" starttime="20170215 14:04:56.628"></status>
+</kw>
+<msg timestamp="20170215 14:04:56.628" level="INFO">${set_judge} = {u'ErrMessage': ['', '', ''], u'HasError': ['', '', ''], u'HRESULT': ['', '', ''], u'ObjectValue': ['', '', '']}</msg>
+<status status="PASS" endtime="20170215 14:04:56.628" starttime="20170215 14:04:56.612"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>UserId</arg>
+<arg>26035</arg>
+<arg>NickName</arg>
+<arg>灵儿的守护</arg>
+<arg>name</arg>
+<arg>xumin2</arg>
+<arg>sex</arg>
+<arg>女</arg>
+<arg>select_year</arg>
+<arg>1921</arg>
+<arg>select_month</arg>
+<arg>13</arg>
+<arg>select_day</arg>
+<arg>1</arg>
+<arg>prov</arg>
+<arg>北京</arg>
+<arg>city</arg>
+<arg>东城区</arg>
+<arg>qq</arg>
+<arg>1234567</arg>
+</arguments>
+<assign>
+<var>${request_body}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.628" level="INFO">${request_body} = {u'UserId': u'26035', u'NickName': u'\u7075\u513f\u7684\u5b88\u62a4', u'name': u'xumin2', u'sex': u'\u5973', u'select_year': u'1921', u'select_month': u'13', u'select_day': u'1', u'prov': u'\u5317\u4e...</msg>
+<status status="PASS" endtime="20170215 14:04:56.628" starttime="20170215 14:04:56.628"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>ErrMessage</arg>
+<arg>HasError</arg>
+<arg>HRESULT</arg>
+<arg>ObjectValue</arg>
+</arguments>
+<assign>
+<var>${judge_value}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.628" level="INFO">${judge_value} = {u'ErrMessage': '', u'HasError': '', u'HRESULT': '', u'ObjectValue': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.628" starttime="20170215 14:04:56.628"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${request}</arg>
+</arguments>
+<msg timestamp="20170215 14:04:56.644" level="INFO">{u'host': u'http://yqq.emoney.cn', u'url': u'/myhome/saveinfo', u'method': u'post', u'protocol': u'http', u'headers': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.644" starttime="20170215 14:04:56.644"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${request_body}</arg>
+</arguments>
+<msg timestamp="20170215 14:04:56.644" level="INFO">{u'UserId': u'26035', u'NickName': u'\u7075\u513f\u7684\u5b88\u62a4', u'name': u'xumin2', u'sex': u'\u5973', u'select_year': u'1921', u'select_month': u'13', u'select_day': u'1', u'prov': u'\u5317\u4eac', u'city': u'\u4e1c\u57ce\u533a', u'qq': u'1234567'}</msg>
+<status status="PASS" endtime="20170215 14:04:56.644" starttime="20170215 14:04:56.644"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${judge_value}</arg>
+</arguments>
+<msg timestamp="20170215 14:04:56.644" level="INFO">{u'ErrMessage': '', u'HasError': '', u'HRESULT': '', u'ObjectValue': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.644" starttime="20170215 14:04:56.644"></status>
+</kw>
+<kw name="Judge Start" library="judge">
+<arguments>
+<arg>${request}</arg>
+<arg>${request_body}</arg>
+<arg>${judge_value}</arg>
+<arg>${set_judge}</arg>
+</arguments>
+<assign>
+<var>${re_data}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.675" level="INFO">{u'ErrMessage': u'String was not recognized as a valid DateTime.', u'HasError': True, u'HRESULT': None, u'ObjectValue': -1}
+['', '', '']
+
+---------------
+['', '', '']
+
+---------------
+['', '', '']
+
+---------------
+['', '', '']
+
+---------------
+
+&lt;type 'str'&gt;
+String was not recognized as a valid DateTime.
+&lt;type 'unicode'&gt;
+----------------
+-1
+---------------
+
+&lt;type 'str'&gt;
+True
+&lt;type 'bool'&gt;
+----------------
+1
+---------------
+
+&lt;type 'str'&gt;
+None
+&lt;type 'NoneType'&gt;
+----------------
+1
+---------------
+
+&lt;type 'str'&gt;
+-1
+&lt;type 'int'&gt;
+----------------
+1
+---------------</msg>
+<msg timestamp="20170215 14:04:56.675" level="INFO">${re_data} = 200</msg>
+<status status="PASS" endtime="20170215 14:04:56.675" starttime="20170215 14:04:56.644"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${re_data}</arg>
+</arguments>
+<msg timestamp="20170215 14:04:56.675" level="INFO">200</msg>
+<status status="PASS" endtime="20170215 14:04:56.675" starttime="20170215 14:04:56.675"></status>
+</kw>
+<status status="PASS" endtime="20170215 14:04:56.675" critical="yes" starttime="20170215 14:04:56.612"></status>
+</test>
+<test id="s1-s1-s1-t4" name="case4">
+<kw name="set_request">
+<assign>
+<var>${request}</var>
+</assign>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>host</arg>
+<arg>http://yqq.emoney.cn</arg>
+<arg>url</arg>
+<arg>/myhome/saveinfo</arg>
+<arg>method</arg>
+<arg>post</arg>
+<arg>protocol</arg>
+<arg>http</arg>
+<arg>headers</arg>
+</arguments>
+<assign>
+<var>${request}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.690" level="INFO">${request} = {u'host': u'http://yqq.emoney.cn', u'url': u'/myhome/saveinfo', u'method': u'post', u'protocol': u'http', u'headers': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.690" starttime="20170215 14:04:56.690"></status>
+</kw>
+<msg timestamp="20170215 14:04:56.690" level="INFO">${request} = {u'host': u'http://yqq.emoney.cn', u'url': u'/myhome/saveinfo', u'method': u'post', u'protocol': u'http', u'headers': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.690" starttime="20170215 14:04:56.690"></status>
+</kw>
+<kw name="set_judge">
+<assign>
+<var>${set_judge}</var>
+</assign>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+</arguments>
+<assign>
+<var>@{ErrMessage}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.690" level="INFO">@{ErrMessage} = [  |  |  ]</msg>
+<status status="PASS" endtime="20170215 14:04:56.690" starttime="20170215 14:04:56.690"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+</arguments>
+<assign>
+<var>@{HasError}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.690" level="INFO">@{HasError} = [  |  |  ]</msg>
+<status status="PASS" endtime="20170215 14:04:56.690" starttime="20170215 14:04:56.690"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+</arguments>
+<assign>
+<var>@{HRESULT}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.690" level="INFO">@{HRESULT} = [  |  |  ]</msg>
+<status status="PASS" endtime="20170215 14:04:56.690" starttime="20170215 14:04:56.690"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+</arguments>
+<assign>
+<var>@{ObjectValue}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.690" level="INFO">@{ObjectValue} = [  |  |  ]</msg>
+<status status="PASS" endtime="20170215 14:04:56.690" starttime="20170215 14:04:56.690"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>ErrMessage=@{ErrMessage}</arg>
+<arg>HasError=@{HasError}</arg>
+<arg>HRESULT=@{HRESULT}</arg>
+<arg>ObjectValue=@{ObjectValue}</arg>
+</arguments>
+<assign>
+<var>&amp;{judge}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.706" level="INFO">&amp;{judge} = { ErrMessage=['', '', ''] | HasError=['', '', ''] | HRESULT=['', '', ''] | ObjectValue=['', '', ''] }</msg>
+<status status="PASS" endtime="20170215 14:04:56.706" starttime="20170215 14:04:56.690"></status>
+</kw>
+<msg timestamp="20170215 14:04:56.706" level="INFO">${set_judge} = {u'ErrMessage': ['', '', ''], u'HasError': ['', '', ''], u'HRESULT': ['', '', ''], u'ObjectValue': ['', '', '']}</msg>
+<status status="PASS" endtime="20170215 14:04:56.706" starttime="20170215 14:04:56.690"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>UserId</arg>
+<arg>26035</arg>
+<arg>NickName</arg>
+<arg>灵儿的守护</arg>
+<arg>name</arg>
+<arg>xumin2</arg>
+<arg>sex</arg>
+<arg>女</arg>
+<arg>select_year</arg>
+<arg>1923</arg>
+<arg>select_month</arg>
+<arg>13</arg>
+<arg>select_day</arg>
+<arg>1</arg>
+<arg>prov</arg>
+<arg>北京</arg>
+<arg>city</arg>
+<arg>东城区</arg>
+<arg>qq</arg>
+<arg>1234567</arg>
+</arguments>
+<assign>
+<var>${request_body}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.706" level="INFO">${request_body} = {u'UserId': u'26035', u'NickName': u'\u7075\u513f\u7684\u5b88\u62a4', u'name': u'xumin2', u'sex': u'\u5973', u'select_year': u'1923', u'select_month': u'13', u'select_day': u'1', u'prov': u'\u5317\u4e...</msg>
+<status status="PASS" endtime="20170215 14:04:56.706" starttime="20170215 14:04:56.706"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>ErrMessage</arg>
+<arg>HasError</arg>
+<arg>HRESULT</arg>
+<arg>ObjectValue</arg>
+</arguments>
+<assign>
+<var>${judge_value}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.706" level="INFO">${judge_value} = {u'ErrMessage': '', u'HasError': '', u'HRESULT': '', u'ObjectValue': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.706" starttime="20170215 14:04:56.706"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${request}</arg>
+</arguments>
+<msg timestamp="20170215 14:04:56.706" level="INFO">{u'host': u'http://yqq.emoney.cn', u'url': u'/myhome/saveinfo', u'method': u'post', u'protocol': u'http', u'headers': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.706" starttime="20170215 14:04:56.706"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${request_body}</arg>
+</arguments>
+<msg timestamp="20170215 14:04:56.706" level="INFO">{u'UserId': u'26035', u'NickName': u'\u7075\u513f\u7684\u5b88\u62a4', u'name': u'xumin2', u'sex': u'\u5973', u'select_year': u'1923', u'select_month': u'13', u'select_day': u'1', u'prov': u'\u5317\u4eac', u'city': u'\u4e1c\u57ce\u533a', u'qq': u'1234567'}</msg>
+<status status="PASS" endtime="20170215 14:04:56.706" starttime="20170215 14:04:56.706"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${judge_value}</arg>
+</arguments>
+<msg timestamp="20170215 14:04:56.706" level="INFO">{u'ErrMessage': '', u'HasError': '', u'HRESULT': '', u'ObjectValue': ''}</msg>
+<status status="PASS" endtime="20170215 14:04:56.706" starttime="20170215 14:04:56.706"></status>
+</kw>
+<kw name="Judge Start" library="judge">
+<arguments>
+<arg>${request}</arg>
+<arg>${request_body}</arg>
+<arg>${judge_value}</arg>
+<arg>${set_judge}</arg>
+</arguments>
+<assign>
+<var>${re_data}</var>
+</assign>
+<msg timestamp="20170215 14:04:56.737" level="INFO">{u'ErrMessage': u'String was not recognized as a valid DateTime.', u'HasError': True, u'HRESULT': None, u'ObjectValue': -1}
+['', '', '']
+
+---------------
+['', '', '']
+
+---------------
+['', '', '']
+
+---------------
+['', '', '']
+
+---------------
+
+&lt;type 'str'&gt;
+String was not recognized as a valid DateTime.
+&lt;type 'unicode'&gt;
+----------------
+-1
+---------------
+
+&lt;type 'str'&gt;
+True
+&lt;type 'bool'&gt;
+----------------
+1
+---------------
+
+&lt;type 'str'&gt;
+None
+&lt;type 'NoneType'&gt;
+----------------
+1
+---------------
+
+&lt;type 'str'&gt;
+-1
+&lt;type 'int'&gt;
+----------------
+1
+---------------</msg>
+<msg timestamp="20170215 14:04:56.737" level="INFO">${re_data} = 200</msg>
+<status status="PASS" endtime="20170215 14:04:56.737" starttime="20170215 14:04:56.722"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${re_data}</arg>
+</arguments>
+<msg timestamp="20170215 14:04:56.737" level="INFO">200</msg>
+<status status="PASS" endtime="20170215 14:04:56.737" starttime="20170215 14:04:56.737"></status>
+</kw>
+<status status="PASS" endtime="20170215 14:04:56.753" critical="yes" starttime="20170215 14:04:56.675"></status>
+</test>
+<status status="PASS" endtime="20170215 14:04:56.753" starttime="20170215 14:04:56.285"></status>
+</suite>
+<status status="PASS" endtime="20170215 14:04:56.753" starttime="20170215 14:04:56.285"></status>
+</suite>
+<status status="PASS" endtime="20170215 14:04:56.768" starttime="20170215 14:04:56.238"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="4">Critical Tests</stat>
+<stat fail="0" pass="4">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="caseManage" pass="4">caseManage</stat>
+<stat fail="0" id="s1-s1" name="Yqq" pass="4">caseManage.Yqq</stat>
+<stat fail="0" id="s1-s1-s1" name="Saveinfo" pass="4">caseManage.Yqq.Saveinfo</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

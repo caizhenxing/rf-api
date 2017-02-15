@@ -1,27 +1,47 @@
 #coding=utf-8
 from module import xlsxEngine
 from module import create_case
-class main(object):
+import sys
+import getopt
 
 
-    def main(self, filename, kind):
 
-        if kind == 1:
-            op_xlsx = xlsxEngine.xlsxEngine_op("test")
-            op_xlsx.create()
+def main(argv):
+    print "a"
+    init_para_file = ''
+    create_robot_file = ''
+    createfile = ''
+    try:
+        opts, args = getopt.getopt(argv, "hi:r:c:", ["init_para_file=", "create_robot_file=","create="])
+    except getopt.GetoptError:
+        print 'test.py -i <init_para_file> -r <create_robot_file> -c <createfile>'
+        sys.exit(2)
+    for opt, arg in opts:
+        if opt == '-h':
+            print 'test.py -i <init_para_file> -r <create_robot_file> -c <createfile>'
+            sys.exit()
+        elif opt in ("-i", "--init_para_file"):
+            init_para_file = arg
+        elif opt in ("-r", "--create_robot_file"):
+            create_robot_file = arg
+        elif opt in ("-c", "--crfile"):
+            createfile = arg
 
-        if kind == 2:
-            op_xlsx = xlsxEngine.xlsxEngine_op("test")
-            op_xlsx.init_para()
+    if createfile:
+        op_xlsx = xlsxEngine.xlsxEngine_op(createfile)
+        op_xlsx.create()
+    #
+    if init_para_file:
+        op_xlsx = xlsxEngine.xlsxEngine_op(init_para_file)
+        op_xlsx.init_para()
 
-        if kind == 3:
-            createCase = create_case.create_case("test")
-            createCase.create_case()
-
-        if kind == 4:
-            judgeValue = judge_value.judge_value()
-            judgeValue.judge_start(filename)
+    if create_robot_file:
+        createCase = create_case.create_case(create_robot_file)
+        createCase.create_case()
+    #
+    # if kind == 4:
+    #     judgeValue = judge_value.judge_value()
+    #     judgeValue.judge_start(filename)
 
 if __name__=='__main__':
-    test = main()
-    test.main("follow_test",3)
+    main(sys.argv[1:])
