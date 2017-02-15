@@ -1,27 +1,30 @@
 # -*- coding:utf-8 -*-
 import xlsxEngine
+import string
+import os
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 class create_case(object):
 
     def __init__(self, file):
-        self.xlsx_rd = xlsxEngine.xlsxEngine_rd(file+".xls")
+        self.xlsx_rd = xlsxEngine.xlsxEngine_rd(file)
         self.xlrd_open = self.xlsx_rd.xlrd_open()
         self.para_sheet = self.xlrd_open[2]
         self.case_sheet = self.xlrd_open[3]
         self.file = file
-        print file
 
     def print_value(self):
         print self.para_sheet.cell(0, 0).value
         print self.case_sheet.cell(0, 0).value
 
     def create_case(self):
-        fp = open(r"D:\rf-api\caseManage\yqq\%s.txt"%self.file, "w")
+        temp = os.path.splitext(self.file)
+        file = temp[0]+".txt"
+        fp = open(r"%s"%file, "w")
         content = "*** Settings ***"+ "\n"
         content = content + "Library           Collections"+ "\n"
-        content = content + "Library           ../../module/judge.py" + "\n"
+        content = content + "Library           ../../rf-api/module/judge.py" + "\n"
         content = content + "\n"
         content = content + "*** Test Cases ***" + "\n"
 

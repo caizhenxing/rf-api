@@ -53,7 +53,7 @@ class judge(object):
 
             if cmp(re_data, judge_data) != 0:
                 judge_flag = False
-                judge_log = u"error message:json_para%r,expected value is %r,return value is %r"%(json_key,judge_data,re_data)
+                judge_log = u"error message:json_para is %r,expected value is %r,return value is %r"%(json_key,judge_data,re_data)
                 error_list.append(judge_log)
         re_dict["judge_flag"] = judge_flag
         re_dict["error_list"] = error_list

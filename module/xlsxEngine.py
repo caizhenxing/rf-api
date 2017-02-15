@@ -67,16 +67,17 @@ class xlsxEngine_op(object):
 
     def __init__(self, file):
         self.xlsx_name = file
-        if os.path.exists(self.xlsx_name+".xls"):
-            self.xlrd_object = xlrd.open_workbook(self.xlsx_name+".xls")
+        if os.path.exists(self.xlsx_name):
+            self.xlrd_object = xlrd.open_workbook(self.xlsx_name)
         else:
             self.xlrd_object = None
-        self.xlsx_object = xlsxwriter.Workbook(self.xlsx_name+".xls")
+        self.xlsx_object = xlsxwriter.Workbook(self.xlsx_name)
         self.isopenfailed = True
 
     def create(self):
         try:
-            self.xlsx_object = xlsxwriter.Workbook(self.xlsx_name + ".xls")
+            print self.xlsx_name
+            self.xlsx_object = xlsxwriter.Workbook(self.xlsx_name)
             self.xlsx_sheet = self.xlsx_object.add_worksheet("para")
             self.xlsx_sheet.write(0, 0, "host")
             self.xlsx_sheet.write(1, 0, "url")
