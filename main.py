@@ -43,6 +43,11 @@ def main(argv):
     if init_para_file:
         op_xlsx = xlsxEngine.xlsxEngine_op(init_para_file)
         op_xlsx.init_para()
+        op_xlsx = xlsxEngine.xlsxEngine_op(init_para_file)
+        op_xlsx.init_para()
+
+
+
 
     if create_robot_file:
         createCase = create_case.create_case(create_robot_file)

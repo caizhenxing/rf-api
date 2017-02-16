@@ -46,8 +46,6 @@ class xlsxEngine_rd(object):
 
         return re_dict
 
-
-
 class xlsxEngine_wt(object):
 
     def __init__(self, file):
@@ -76,7 +74,6 @@ class xlsxEngine_op(object):
 
     def create(self):
         try:
-            print self.xlsx_name
             self.xlsx_object = xlsxwriter.Workbook(self.xlsx_name)
             self.xlsx_sheet = self.xlsx_object.add_worksheet("para")
             self.xlsx_sheet.write(0, 0, "host")
@@ -92,6 +89,8 @@ class xlsxEngine_op(object):
             self.isopenfailed = False
         except Exception, e:
             print "error at xlsxEngine_op ->create"
+        # if self.isopenfailed == False:
+        #     self.xlsx_object.close()
 
     def init_para(self):
         try:
@@ -102,6 +101,10 @@ class xlsxEngine_op(object):
 
         except Exception, e:
             print "error at xlsxEngine_op -> init_para_try1"
+        lista =[]
+        listb =[]
+        para_list = lista
+        all_List = listb
 
         para_list = self.para_list(xlrd_sheet)
         values = [[] for i in range(len(para_list))]
@@ -158,7 +161,7 @@ class xlsxEngine_op(object):
         re_dict = opRequest.send_request()
 
         url1 = "1"
-        json_key_list = recursive.json_key(re_dict["data"], url1)
+        json_key_list = recursive.json_key(re_dict["data"],url1)
         json_key_col = len(para_list) + 2
         for json_key in json_key_list:
             xlsx_case_sheet.write(3, json_key_col, json_key)
@@ -209,6 +212,9 @@ class xlsxEngine_op(object):
         if isinstance(value, (float)):
             re_data = str(int(value))
         return re_data
+
+
+
 
 
 
