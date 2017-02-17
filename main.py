@@ -5,15 +5,12 @@ from module import robot_run
 import sys
 import getopt
 
-
-
 def main(argv):
     init_para_file = ''
     create_robot_file = ''
     createfile = ''
     run_robot_file = ''
     all_run_fold = ''
-
     try:
         opts, args = getopt.getopt(argv, "hi:r:c:u:a:", ["init_para_file=", "create_robot_file=", "create=", "run=", "all_run="])
     except getopt.GetoptError:
@@ -35,19 +32,15 @@ def main(argv):
         elif opt in ("-a", "--project fold"):
             all_run_fold = arg
 
-
     if createfile:
         op_xlsx = xlsxEngine.xlsxEngine_op(createfile)
         op_xlsx.create()
-    #
+
     if init_para_file:
         op_xlsx = xlsxEngine.xlsxEngine_op(init_para_file)
         op_xlsx.init_para()
         op_xlsx = xlsxEngine.xlsxEngine_op(init_para_file)
         op_xlsx.init_para()
-
-
-
 
     if create_robot_file:
         createCase = create_case.create_case(create_robot_file)
@@ -60,7 +53,6 @@ def main(argv):
     if all_run_fold:
         allRun = robot_run.all_run(all_run_fold)
         allRun.all_run()
-
 
 if __name__=='__main__':
     main(sys.argv[1:])

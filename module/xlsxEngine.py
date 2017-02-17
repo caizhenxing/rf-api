@@ -53,6 +53,9 @@ class xlsxEngine_wt(object):
         self.xlsx_object = None
         self.xlsx_sheet = None
         self.isopenfailed = True
+        self.all_list =[]
+        self.para_list =[]
+
 
     def open(self):
         try:
@@ -101,13 +104,9 @@ class xlsxEngine_op(object):
 
         except Exception, e:
             print "error at xlsxEngine_op -> init_para_try1"
-        lista =[]
-        listb =[]
-        para_list = lista
-        all_List = listb
 
-        para_list = self.para_list(xlrd_sheet)
-        values = [[] for i in range(len(para_list))]
+        self.para_list = self.para_list(xlrd_sheet)
+        values = [[] for i in range(len(self.para_list))]
 
         xlsx_case_sheet.write(0, 0, "judge_logic")
         xlsx_case_sheet.write(1, 0, "judge_env")
@@ -115,8 +114,8 @@ class xlsxEngine_op(object):
         xlsx_case_sheet.write(3, 0, "case_Id")
 
 
-        for i in range(0, len(para_list), 1):
-            pos = self.cell_post(xlrd_sheet, para_list[i])
+        for i in range(0, len(self.para_list), 1):
+            pos = self.cell_post(xlrd_sheet, self.para_list[i])
             row = pos["row"]
             col = pos["col"]
             for x in range(row + 1, xlrd_sheet.nrows, 1):
@@ -124,16 +123,17 @@ class xlsxEngine_op(object):
                     add_para = self.charge_to_str(xlrd_sheet.cell(x, col).value)
                     values[i].append(add_para)
 
-        for i in range(1, len(para_list)+1, 1):
-            xlsx_case_sheet.write(3, i, para_list[i-1])
+        for i in range(1, len(self.para_list)+1, 1):
+            xlsx_case_sheet.write(3, i, self.para_list[i-1])
 
-        xlsx_case_sheet.write(3, len(para_list)+1, "Judgement")
+        xlsx_case_sheet.write(3, len(self.para_list)+1, "Judgement")
 
         templist = []
-        all_List = recursive.createTestCase(values, templist, len(values))
+        Recursive = recursive.recursive()
+        self.all_List = Recursive.createTestCase(values, templist, len(values))
 
         index = 0
-        for case_para in all_List:
+        for case_para in self.all_List:
             xlsx_case_sheet.write(index+4, 0, index+1)
             list.reverse(case_para)
             y = 0
@@ -152,8 +152,8 @@ class xlsxEngine_op(object):
         request["headers"] = xlrd_sheet.cell(4, 1).value
 
         try:
-            for i in range(0, len(para_list), 1):
-                request_body[para_list[i]] = all_List[0][i]
+            for i in range(0, len(self.para_list), 1):
+                request_body[self.para_list[i]] = self.all_List[0][i]
         except Exception, e:
             print "no para"
 
@@ -161,8 +161,8 @@ class xlsxEngine_op(object):
         re_dict = opRequest.send_request()
 
         url1 = "1"
-        json_key_list = recursive.json_key(re_dict["data"],url1)
-        json_key_col = len(para_list) + 2
+        json_key_list = Recursive.json_key(re_dict["data"],url1)
+        json_key_col = len(self.para_list) + 2
         for json_key in json_key_list:
             xlsx_case_sheet.write(3, json_key_col, json_key)
             json_key_col += 1
